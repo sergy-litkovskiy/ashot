@@ -1,10 +1,3 @@
-<!--[if IE 5]>
-<p><font style="color:#FF0000"><b>ВНИМАНИЕ!</b></font><br>У Вас устаревшая версия Internet Explorer.<br> Для корректного отображения страниц сайта просим пользоваться версией не ниже Internet Explorer7! <br><font style="color:#FF0000"><b>Для большего удобства предлагаем использовать браузер <a href='http://www.opera.com/download/'>OPERA</a> или <a href='http://ru.www.mozilla.com'>Mozilla FireFox</a></b></font></p>
-<![endif]-->
-<!--[if IE 6]>
-<p><font style="color:#FF0000; font-size:11pt"><b>ВНИМАНИЕ!</b> </font><span style="color:#FFFFFF;font-size:11pt">У Вас устаревшая версия Internet Explorer. Для корректного отображения страниц сайта просим пользоваться версией <b><u>не ниже Internet Explorer7! </u></b></span><br><font style="color:#FFFFFF; font-size:11pt"><b>Для большего удобства предлагаем использовать браузер <a href='http://www.opera.com/download/'>OPERA</a> или <a href='http://ru.www.mozilla.com'>Mozilla FireFox</a></b></font></p>
-<link rel="stylesheet" href="<?php echo base_url();?>/css/style_ie.css" type="text/css" />
-<![endif]-->
 <!--[if ie 7]><link rel="stylesheet" href="<?php echo base_url();?>css/style_ie.css" type="text/css" /><![endif]-->
 <!--[if ie 8]><link rel="stylesheet" href="<?php echo base_url();?>css/style_ie.css" type="text/css" /><![endif]-->
 <link rel="stylesheet" href="<?php echo base_url();?>css/style_all.css" type="text/css" />
@@ -16,8 +9,8 @@
 </noscript>
 
 <meta http-equiv="content-type" content="text/html; charset=windows-1251" />
-<meta name="description" content="Ашот Арутюнян - художник, фотограф, книгоиздатель, дизайнер" />
-<meta name="keywords" content="художник, фотограф, книгоиздатель, дизайнер, ашот арутюнян, портреты, фотографии, картины, фотоальбомы, заказать портрет" />
+<meta name="description" content="пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" />
+<meta name="keywords" content="пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" />
 <meta name='yandex-verification' content='55a868aa97a7b23f' />
 <link rel="shortcut icon" type="image/x-icon" href="/favicon_spring.ico" />
 <meta name="robots" content="INDEX, FOLLOW"/>

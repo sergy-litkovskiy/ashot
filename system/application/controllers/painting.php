@@ -10,12 +10,13 @@ if (!defined('BASEPATH'))
 
 class Painting extends MY_Controller
 {
-	public $data_arr, $urlArr;
+	public $data_arr, $urlArr, $defaultTitle;
 
 	function __construct()
 	{
 	   parent::MY_Controller();
-	   $this->data_arr['title'] = 'admin painting';
+	   $this->data_arr['title'] = mb_convert_encoding('Живопись', "windows-1251", "UTF-8");
+	   $this->defaultTitle = mb_convert_encoding('Живопись', "windows-1251", "UTF-8");
 	   $this->urlArr            = explode('/',$_SERVER['REQUEST_URI']);
 	}
 
@@ -31,7 +32,7 @@ class Painting extends MY_Controller
             $this->data_arr['result'][$key]['count_comment'] = count($comments);
        }
 	       
-       $this->data_arr['title']     = '��������&nbsp;&bull;&nbsp;����������';
+       $this->data_arr['title']     = mb_convert_encoding('Живопись&nbsp;&bull;&nbsp;Сюреализм', "windows-1251", "UTF-8");
 	   $this->data_arr['uri']       = $this->urlArr;
        $this->data_arr['order_form'] = $this->load->view('other/order_form', '', true);
    
@@ -54,8 +55,8 @@ class Painting extends MY_Controller
             $this->data_arr['result'][$key]['comments'] = $comments;
             $this->data_arr['result'][$key]['count_comment'] = count($comments);
        }
-	       
-       $this->data_arr['title']     = '��������&nbsp;&bull;&nbsp;������';
+
+        $this->data_arr['title']     = mb_convert_encoding('Живопись&nbsp;&bull;&nbsp;Разное', "windows-1251", "UTF-8");
 	   $this->data_arr['uri']       = $this->urlArr;
        $this->data_arr['order_form'] = $this->load->view('other/order_form', '', true);
     
@@ -119,7 +120,7 @@ class Painting extends MY_Controller
             $this->data_arr['result'][$key]['comments'] = $comments;
             $this->data_arr['result'][$key]['count_comment'] = count($comments);
        }
-       $this->data_arr['title']     = '��������&nbsp;&bull;&nbsp;�������';
+        $this->data_arr['title']     = mb_convert_encoding('Живопись&nbsp;&bull;&nbsp;Пейзажи', "windows-1251", "UTF-8");
 	   $this->data_arr['uri']       = $this->urlArr;
        $this->data_arr['order_form'] = $this->load->view('other/order_form', '', true);
        
@@ -143,7 +144,7 @@ class Painting extends MY_Controller
             $this->data_arr['result'][$key]['comments'] = $comments;
             $this->data_arr['result'][$key]['count_comment'] = count($comments);
        }
-       $this->data_arr['title']     = '��������&nbsp;&bull;&nbsp;����������';
+        $this->data_arr['title']     = mb_convert_encoding('Живопись&nbsp;&bull;&nbsp;Натюрморты', "windows-1251", "UTF-8");
 	   $this->data_arr['uri']       = $this->urlArr;
        $this->data_arr['order_form'] = $this->load->view('other/order_form', '', true);
 	   $data = array(
@@ -177,8 +178,8 @@ class Painting extends MY_Controller
 	{
        $this->data_arr['result']    = $this->painting_model->getArrWhere('category', array('cat_name' => $catName), null, null);
        $name_ru                     = translate_painting($catName);
- 
-       $this->data_arr['title']      = '��������&nbsp;&bull;&nbsp;'.$name_ru;
+
+       $this->data_arr['title']     = $this->defaultTitle . ' &bull; ' . $name_ru;
 	   $this->data_arr['uri']       = $this->urlArr;
        $this->data_arr['order_form'] = $this->load->view('other/order_form', '', true);
 	   $data = array(
@@ -268,7 +269,7 @@ class Painting extends MY_Controller
 	{
 	   if($this->session->userdata('username'))
         {
-    	   $this->data_arr['title'] = '������������� '.translate_painting($part);
+    	   $this->data_arr['title'] = $this->defaultTitle.' '.translate_painting($part);
            $this->data_arr['part']  = $part;
             if(!$id)
     		{
@@ -317,7 +318,7 @@ class Painting extends MY_Controller
             $rules = array(
                     array(
     		        'field'	=> 'text_short',
-    		    	'label'	=> '<�����>',
+    		    	'label'	=> '<short text>',
     		    	'rules'	=> 'required')
                     );
         
@@ -478,7 +479,7 @@ class Painting extends MY_Controller
 	{
 	   if($this->session->userdata('username'))
         {
-            $this->data_arr['title']  = '����������� '.translate_photos($part);
+            $this->data_arr['title']  = $this->defaultTitle.' '.translate_photos($part);
             $this->data_arr['part']   = $part;
             $resultArr                = $this->photos_model->getArrWhere('category',array('part_name' => $part), null, null);
             $this->data_arr['result'] = $this->photos_model->getArrWhere('images',array('id_category' => $resultArr[0]['id']), null, null, 'number');
@@ -572,7 +573,7 @@ class Painting extends MY_Controller
 	{
 	    if($this->session->userdata('username'))
         {
-    	    $this->data_arr['title'] = '������� '.translate_painting($part);
+    	    $this->data_arr['title'] = $this->defaultTitle.' '.translate_painting($part);
             $this->data_arr['part']  = $part;
             if(!$id)
     		{

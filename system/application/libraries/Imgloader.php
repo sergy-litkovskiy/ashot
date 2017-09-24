@@ -91,7 +91,7 @@ class Imgloader
      */
     public function loadImg($imgName, $uploadPath, $imgTmpName)
     {
-        $imgName = iconv("windows-1251//IGNORE", "UTF-8", $imgName);
+        $imgName = mb_convert_encoding($imgName, "UTF-8", "windows-1251");
 
         $filename = $this->transliterateText(strtolower($imgName));
 
@@ -152,6 +152,7 @@ class Imgloader
             ";"=>"_",
             "–-"=>"-",
             " "=>"_",
+            "?"=>"",
         );
 
         $cyrillicData = array_keys($rules);
