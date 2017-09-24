@@ -1,135 +1,162 @@
 <?php
 
-/**
- * @author Litkovskiy
- * @copyright 2010
- */
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Imgloader {
-	
+class Imgloader
+{
+
     /**
-	 * set transparency
-     * 
+     * set transparency
+     *
      * @param string $new_image
      * @param string $image_source
-	 */
-	
-	public function setTransparency($new_image, $image_source)
-        {
-	        $transparencyIndex = imagecolortransparent($image_source);
-	        
-	        $transparencyColor = array('red' => 255, 'green' => 255, 'blue' => 255);
-	       
-	        if ($transparencyIndex >= 0)
-	        
-	            $transparencyColor = imagecolorsforindex($image_source, $transparencyIndex);   
-	       
-	        $transparencyIndex = imagecolorallocate($new_image, $transparencyColor['red'], $transparencyColor['green'], $transparencyColor['blue']);
-	        
-	        imagefill($new_image, 0, 0, $transparencyIndex);
-	        
-	        imagecolortransparent($new_image, $transparencyIndex);
-        }
+     */
+
+    public function setTransparency($new_image, $image_source)
+    {
+        $transparencyIndex = imagecolortransparent($image_source);
+
+        $transparencyColor = array('red' => 255, 'green' => 255, 'blue' => 255);
+
+        if ($transparencyIndex >= 0)
+
+            $transparencyColor = imagecolorsforindex($image_source, $transparencyIndex);
+
+        $transparencyIndex = imagecolorallocate($new_image, $transparencyColor['red'], $transparencyColor['green'], $transparencyColor['blue']);
+
+        imagefill($new_image, 0, 0, $transparencyIndex);
+
+        imagecolortransparent($new_image, $transparencyIndex);
+    }
 
 //--------------------------------------------------------------------------------		
+
     /**
-	 * set new size img
-     * 
+     * set new size img
+     *
      * @param string $filename
      * @param string $upload_path
-	 */
-	public function setNewSize($filename, $upload_path)
-		{
-			       /*Устанавливаем новую ширину, по которой будем обрезать*/
-					$final_width_of_image = 100;
-					
-		            /*Определяем формат загруженного изображения*/
-					if(preg_match('/[.](jpg)$/', $filename)) {
-					  $im = imagecreatefromjpeg($upload_path . $filename);
-					  } 
-					  else if (preg_match('/[.](jpeg)$/', $filename)) {
-					  $im = imagecreatefromjpeg($upload_path . $filename);
-					  } 
-					  else if (preg_match('/[.](gif)$/', $filename)) {
-					  $im = imagecreatefromgif($upload_path . $filename);
-					  $gif = 1;
-					  } 
-					  else if (preg_match('/[.](png)$/', $filename)) {
-					  $im = imagecreatefrompng($upload_path . $filename);
-					  $png = 1;
-					  } 
-					  
-					  $ox = imagesx($im);
-					  $oy = imagesy($im);
-					  
-					  /*если ширина загружаемой картинки больше разрешенной - уменьшаем до разрешенной и перезаписываем*/
-					  if($ox > $final_width_of_image)
-					  {
-						  $nx = $final_width_of_image;
-						  $ny = floor($oy * ($final_width_of_image / $ox));
-						  
-						  $nm = imagecreatetruecolor($nx, $ny);
-						  
-						  /*если картинка png или gif*/
-						  if(isset($png) || isset($gif))
-						  {
-						    Profile:: setTransparency($nm,$im);
-						  }
+     */
+    public function setNewSize($filename, $upload_path)
+    {
+        $final_width_of_image = 100;
 
-             			  imagecopyresized($nm, $im, 0,0,0,0,$nx,$ny,$ox,$oy);
-						  
-						  /*если картинка jpg*/
-						  if(!isset($png) && !isset($gif))
-						  {
-						    imagejpeg($nm, $upload_path . $filename);
-						  }
-						  elseif(isset($png))
-						  {
-						  	imagepng($nm, $upload_path . $filename);
-						  }
-						  elseif(isset($gif))
-						  {
-						  	imagegif($nm, $upload_path . $filename);
-						  }
-					    }    
-		}
+        if (preg_match('/[.](jpg)$/', $filename)) {
+            $im = imagecreatefromjpeg($upload_path . $filename);
+        } else if (preg_match('/[.](jpeg)$/', $filename)) {
+            $im = imagecreatefromjpeg($upload_path . $filename);
+        } else if (preg_match('/[.](gif)$/', $filename)) {
+            $im  = imagecreatefromgif($upload_path . $filename);
+            $gif = 1;
+        } else if (preg_match('/[.](png)$/', $filename)) {
+            $im  = imagecreatefrompng($upload_path . $filename);
+            $png = 1;
+        }
+
+        $ox = imagesx($im);
+        $oy = imagesy($im);
+
+        if ($ox > $final_width_of_image) {
+            $nx = $final_width_of_image;
+            $ny = floor($oy * ($final_width_of_image / $ox));
+
+            $nm = imagecreatetruecolor($nx, $ny);
+
+            if (isset($png) || isset($gif)) {
+                Profile:: setTransparency($nm, $im);
+            }
+
+            imagecopyresized($nm, $im, 0, 0, 0, 0, $nx, $ny, $ox, $oy);
+
+            if (!isset($png) && !isset($gif)) {
+                imagejpeg($nm, $upload_path . $filename);
+            } elseif (isset($png)) {
+                imagepng($nm, $upload_path . $filename);
+            } elseif (isset($gif)) {
+                imagegif($nm, $upload_path . $filename);
+            }
+        }
+    }
 
 //--------------------------------------------------------------------------------
+
     /**
-	 * load img
-     * @param array $img_arr array of file property
-     * @param string $upload_path
-     * @param array $img_arr_tmp array of tmp file property
-     * 
+     * load img
+     * @param string $imgName
+     * @param string $uploadPath
+     * @param string $imgTmpName
+     *
      * @return string $filename
-	 */
-		public function loadImg($img_arr, $upload_path, $img_arr_tmp)
-		{
-            $filename = strtolower($img_arr);
-		
-    		$allowed_filetypes = array('.jpg','.png','.jpeg','.gif'); 
-    
-    		$max_filesize = 2111111; 
-    									
-    		$ext = substr($filename, strpos($filename,'.'), strlen($filename)-1); 
-    		
-    		if(!in_array($ext,$allowed_filetypes))
-    		die('Данный тип файла не поддерживается.');
-    		
-    		if($img_arr_tmp > $max_filesize)
-    		die("Фаил ".$filename." слишком большой");
-    		
-    		if(!is_writable($upload_path))
-    		die("Невозможно загрузить фаил ".$filename." на сервер");
-    
-    		/* Загружаем фаил в указанную папку*/
-    		if(!move_uploaded_file($img_arr_tmp, $upload_path.$filename))
-    		{
-    		die ("К сожалению, ваш файл ".$filename." не был загружен на сервер.<br>Пожалуйста вернитесь и повторите попытку или обратитесь к администратору сайта");
-    		}
-            
-            return $filename;
-     }
+     */
+    public function loadImg($imgName, $uploadPath, $imgTmpName)
+    {
+        $imgName = iconv("windows-1251//IGNORE", "UTF-8", $imgName);
+
+        $filename = $this->transliterateText(strtolower($imgName));
+
+        $allowedFiletypes = array('.jpg', '.png', '.jpeg', '.gif');
+
+        $maxFilesize = 2111111;
+
+        $ext = substr($filename, strpos($filename, '.'), strlen($filename) - 1);
+
+        if (!in_array(strtolower($ext), $allowedFiletypes))
+            die('You try invalid file type');
+
+        if (filesize($imgTmpName) > $maxFilesize)
+            die("Your file " . $filename . " is more than 2M");
+
+        if (!is_writable($uploadPath))
+            die("You can not upload " . $filename . " to the server");
+
+        if (!move_uploaded_file($imgTmpName, $uploadPath . $filename)) {
+            die ("Sorry your file " . $filename . " was not uploaded.<br>Please, try again or ask your administrator");
+        }
+
+        return $filename;
+    }
+
+    public function transliterateText($text)
+    {
+        $rules = array(
+            " С… "=>"x",
+            " РҐ "=>"x",
+            "Рђ"=>"a", "Р‘"=>"b", "Р’"=>"v", "Р“"=>"g", "Р”"=>"d",
+            "Р•"=>"e", "РЃ"=>"yo", "Р–"=>"zh", "Р—"=>"z", "Р"=>"i",
+            "Р™"=>"j", "Рљ"=>"k", "Р›"=>"l", "Рњ"=>"m", "Рќ"=>"n",
+            "Рћ"=>"o", "Рџ"=>"p", "Р "=>"r", "РЎ"=>"s", "Рў"=>"t",
+            "РЈ"=>"u", "Р¤"=>"f", "РҐ"=>"kh", "Р¦"=>"ts", "Р§"=>"ch",
+            "РЁ"=>"sh", "Р©"=>"sch", "РЄ"=>"", "Р«"=>"y", "Р¬"=>"",
+            "Р­"=>"e", "Р®"=>"yu", "РЇ"=>"ya",
+            "Р°"=>"a", "Р±"=>"b",
+            "РІ"=>"v", "Рі"=>"g", "Рґ"=>"d", "Рµ"=>"e", "С‘"=>"yo",
+            "Р¶"=>"zh", "Р·"=>"z", "Рё"=>"i", "Р№"=>"j", "Рє"=>"k",
+            "Р»"=>"l", "Рј"=>"m", "РЅ"=>"n", "Рѕ"=>"o", "Рї"=>"p",
+            "СЂ"=>"r", "СЃ"=>"s", "С‚"=>"t", "Сѓ"=>"u", "С„"=>"f",
+            "С…"=>"kh", "С†"=>"ts", "С‡"=>"ch", "С€"=>"sh", "С‰"=>"sch",
+            "СЉ"=>"", "С‹"=>"y", "СЊ"=>"", "СЌ"=>"e", "СЋ"=>"yu",
+            "СЏ"=>"ya",
+            " . "=>"_",
+            ". "=>"_",
+            " ."=>"_",
+            " , "=>"_",
+            ", "=>"_",
+            " ,"=>"_",
+            " - "=>"-",
+            " _ "=>"_",
+            "; "=>"_",
+            ","=>"_",
+            "/"=>"-",
+            ":"=>"-",
+            ";"=>"_",
+            "вЂ“-"=>"-",
+            " "=>"_",
+        );
+
+        $cyrillicData = array_keys($rules);
+        $latinData = array_values($rules);
+
+        return str_replace($cyrillicData, $latinData, $text);
+    }
 }

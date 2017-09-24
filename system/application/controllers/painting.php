@@ -15,10 +15,10 @@ class Painting extends MY_Controller
 	function __construct()
 	{
 	   parent::MY_Controller();
-	   $this->data_arr['title'] = 'Живопись';
+	   $this->data_arr['title'] = 'admin painting';
 	   $this->urlArr            = explode('/',$_SERVER['REQUEST_URI']);
 	}
-//$this->firephp->fb($this->data_arr);
+
 	/**
 	 * Creating surrealism page
 	 */
@@ -31,7 +31,7 @@ class Painting extends MY_Controller
             $this->data_arr['result'][$key]['count_comment'] = count($comments);
        }
 	       
-       $this->data_arr['title']     = 'Живопись&nbsp;&bull;&nbsp;Сюрреализм';
+       $this->data_arr['title']     = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ&nbsp;&bull;&nbsp;пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ';
 	   $this->data_arr['uri']       = $this->urlArr;
        $this->data_arr['order_form'] = $this->load->view('other/order_form', '', true);
    
@@ -55,7 +55,7 @@ class Painting extends MY_Controller
             $this->data_arr['result'][$key]['count_comment'] = count($comments);
        }
 	       
-       $this->data_arr['title']     = 'Живопись&nbsp;&bull;&nbsp;Разное';
+       $this->data_arr['title']     = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ&nbsp;&bull;&nbsp;пїЅпїЅпїЅпїЅпїЅпїЅ';
 	   $this->data_arr['uri']       = $this->urlArr;
        $this->data_arr['order_form'] = $this->load->view('other/order_form', '', true);
     
@@ -119,7 +119,7 @@ class Painting extends MY_Controller
             $this->data_arr['result'][$key]['comments'] = $comments;
             $this->data_arr['result'][$key]['count_comment'] = count($comments);
        }
-       $this->data_arr['title']     = 'Живопись&nbsp;&bull;&nbsp;Пейзажи';
+       $this->data_arr['title']     = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ&nbsp;&bull;&nbsp;пїЅпїЅпїЅпїЅпїЅпїЅпїЅ';
 	   $this->data_arr['uri']       = $this->urlArr;
        $this->data_arr['order_form'] = $this->load->view('other/order_form', '', true);
        
@@ -143,7 +143,7 @@ class Painting extends MY_Controller
             $this->data_arr['result'][$key]['comments'] = $comments;
             $this->data_arr['result'][$key]['count_comment'] = count($comments);
        }
-       $this->data_arr['title']     = 'Живопись&nbsp;&bull;&nbsp;Натюрморты';
+       $this->data_arr['title']     = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ&nbsp;&bull;&nbsp;пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ';
 	   $this->data_arr['uri']       = $this->urlArr;
        $this->data_arr['order_form'] = $this->load->view('other/order_form', '', true);
 	   $data = array(
@@ -178,7 +178,7 @@ class Painting extends MY_Controller
        $this->data_arr['result']    = $this->painting_model->getArrWhere('category', array('cat_name' => $catName), null, null);
        $name_ru                     = translate_painting($catName);
  
-       $this->data_arr['title']      = 'Живопись&nbsp;&bull;&nbsp;'.$name_ru;
+       $this->data_arr['title']      = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ&nbsp;&bull;&nbsp;'.$name_ru;
 	   $this->data_arr['uri']       = $this->urlArr;
        $this->data_arr['order_form'] = $this->load->view('other/order_form', '', true);
 	   $data = array(
@@ -268,7 +268,7 @@ class Painting extends MY_Controller
 	{
 	   if($this->session->userdata('username'))
         {
-    	   $this->data_arr['title'] = 'Редактировать '.translate_painting($part);
+    	   $this->data_arr['title'] = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '.translate_painting($part);
            $this->data_arr['part']  = $part;
             if(!$id)
     		{
@@ -317,7 +317,7 @@ class Painting extends MY_Controller
             $rules = array(
                     array(
     		        'field'	=> 'text_short',
-    		    	'label'	=> '<Текст>',
+    		    	'label'	=> '<пїЅпїЅпїЅпїЅпїЅ>',
     		    	'rules'	=> 'required')
                     );
         
@@ -375,7 +375,7 @@ class Painting extends MY_Controller
     		  //if add new placards and any files was not attached - reload add form whith massage error
     		  if($count < 1)
               {
-                $this->data_arr['message'] = "<h2 class='mess_bad'>ВНИМАНИЕ! Вы не выбрали файл для загрузки. Попробуйте еще раз.";
+                $this->data_arr['message'] = "<h2 class='mess_bad'>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ.";
     			$data = array(
     			   'menu'    => $this->load->view(MENU_ADMIN, '', true),
     			   'content' => $this->load->view('painting/new', $this->data_arr, true)
@@ -391,12 +391,11 @@ class Painting extends MY_Controller
                     //if a file field of form was not empty - load the file
                     if(!empty($_FILES['img_path']['name'][$k]))
                     {
-						$upload_path = "img/".$part."/";
-                        $img_arr     = array();
-                        $img_arr     = $_FILES['img_path']['name'][$k];
-                        $img_arr_tmp = $_FILES['img_path']['tmp_name'][$k];
+                        $uploadPath = "img/".$part."/";
+                        $imgName     = $_FILES['img_path']['name'][$k];
+                        $imgTmpName = $_FILES['img_path']['tmp_name'][$k];
                         //if image was successfully loaded into server - to create array of data  for insert to DB 
-                        if($filename = $this->imgloader->loadImg($img_arr, $upload_path, $img_arr_tmp))
+                        if($filename = $this->imgloader->loadImg($imgName, $uploadPath, $imgTmpName))
                         {
                             $max_number = $this->painting_model->getMaxNumByIdCat('images', $category_arr[0]['id']);
                            
@@ -415,7 +414,7 @@ class Painting extends MY_Controller
                         }
                     }
                 }
-                ($count_false > 0) ? $this->data_arr['message'] = "<h2 class='mess_bad'>Некоторые из файлов НЕ были загружены! Пожалуйста, проверьте, какие файлы не загрузились, и повторите попытку.</h2>" : $this->data_arr['message'];
+                ($count_false > 0) ? $this->data_arr['message'] = "<h2 class='mess_bad'>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</h2>" : $this->data_arr['message'];
                 
                 $resultArr                = $this->painting_model->getArrWhere('category',array('part_name' => $part), null, null);
                 $this->data_arr['result'] = $this->painting_model->getArrWhere('images',array('id_category' => $resultArr[0]['id']), null, null, 'number');
@@ -449,18 +448,17 @@ class Painting extends MY_Controller
               //if file field of form was not empty
               elseif($count > 0)
               {
-    		    $upload_path = "img/".$part."/";
-                $img_arr     = array();
-                $img_arr     = $_FILES['img_path']['name'];
-                $img_arr_tmp = $_FILES['img_path']['tmp_name'];
+    		    $uploadPath = "img/".$part."/";
+                $imgName     = $_FILES['img_path']['name'];
+                $imgTmpName = $_FILES['img_path']['tmp_name'];
                 //if image was successfully loaded into server - to create array of data  for insert to DB 
-                if(unlink('img/'.$_REQUEST['img_path_old']))
-                {
-                    if($filename = $this->imgloader->loadImg($img_arr, $upload_path, $img_arr_tmp))
-                    {
-                        $data ['img_path']     = $part."/".$filename;
-                        $this ->_update($data, $part, 'images');
-                    }
+                if(file_exists('img/'.$_REQUEST['img_path_old'])) {
+                    unlink('img/'.$_REQUEST['img_path_old']);
+                }
+
+                if($filename = $this->imgloader->loadImg($imgName, $uploadPath, $imgTmpName)) {
+                    $data ['img_path']     = $part."/".$filename;
+                    $this ->_update($data, $part, 'images');
                 }
               }
     		}
@@ -480,7 +478,7 @@ class Painting extends MY_Controller
 	{
 	   if($this->session->userdata('username'))
         {
-            $this->data_arr['title']  = 'Сортировать '.translate_photos($part);
+            $this->data_arr['title']  = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '.translate_photos($part);
             $this->data_arr['part']   = $part;
             $resultArr                = $this->photos_model->getArrWhere('category',array('part_name' => $part), null, null);
             $this->data_arr['result'] = $this->photos_model->getArrWhere('images',array('id_category' => $resultArr[0]['id']), null, null, 'number');
@@ -574,7 +572,7 @@ class Painting extends MY_Controller
 	{
 	    if($this->session->userdata('username'))
         {
-    	    $this->data_arr['title'] = 'Удалить '.translate_painting($part);
+    	    $this->data_arr['title'] = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ '.translate_painting($part);
             $this->data_arr['part']  = $part;
             if(!$id)
     		{
@@ -616,11 +614,11 @@ class Painting extends MY_Controller
         $rules = array(
                 array(
 		        'field'	=> 'comment_name',
-		    	'label'	=> '<Имя>',
+		    	'label'	=> '<пїЅпїЅпїЅ>',
 		    	'rules'	=> 'trim|required')
                 ,array(
 		        'field'	=> 'comment_text',
-		    	'label'	=> '<Комментарий>',
+		    	'label'	=> '<пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>',
 		    	'rules'	=> 'trim|required')
                 );
     
@@ -657,10 +655,10 @@ class Painting extends MY_Controller
         $email        = "artashot56@bigmir.net";
 		$email_from   = $data['email_sender'];
 		$date         = $data['date'];
-        $phone        = $data['phone'] ? " , телефон отправителя: ".$data['phone'] : null;
-        $subject      = "Заказ на сайте ashot.kiev.ua";
-		$message      = "Дата создания: ".$date.".\r\n На сайте был оформлен заказ от посетителя ' ".$author." ' (email отправителя : ".$email_from.$phone.").\r\n
-		Текст заказа: \r\n".$text;
+        $phone        = $data['phone'] ? " , пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ".$data['phone'] : null;
+        $subject      = "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ ashot.kiev.ua";
+		$message      = "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ".$date.".\r\n пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ' ".$author." ' (email пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : ".$email_from.$phone.").\r\n
+		пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: \r\n".$text;
 
         mail($email, $subject, $message, "Content-type:text/plain; Charset=windows-1251\r\n");
         

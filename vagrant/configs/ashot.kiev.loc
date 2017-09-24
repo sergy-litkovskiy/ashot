@@ -1,7 +1,7 @@
 <VirtualHost 192.168.50.25>
     DocumentRoot /var/www/ashot.kiev.loc
     ServerName ashot.kiev.loc
-    ErrorLog "/private/var/log/apache2/ashot.loc-error_log"
+    ErrorLog "/var/log/apache2/ashot.loc-error_log"
     DirectoryIndex index.php
 	<Directory "/var/www/ashot.kiev.loc">
         Options FollowSymLinks Multiviews Indexes

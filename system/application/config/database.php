@@ -38,7 +38,8 @@ $active_group = "default";
 $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
-$db['default']['username'] = "ashotadmin";
+//$db['default']['username'] = "ashotadmin";
+$db['default']['username'] = "root";
 $db['default']['password'] = "clio2004";
 $db['default']['database'] = "ashot";
 $db['default']['dbdriver'] = "mysql";
