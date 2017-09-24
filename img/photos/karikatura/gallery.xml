@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="win-1251" ?>
+<gallery cellDimension="600" columns="5" zoomOutPerc="25" zoomInPerc="100" frameWidth="20" frameColor="0xFFFFFF" captionColor="0xFFFFFF" enableRightClickOpen="false" >
+<image>
+   <url>images/000.jpg</url>
+    <caption></caption>
+</image>
+<image>
+   <url>images/001.jpg</url>
+   <caption></caption>
+</image>
+<image>
+   <url>images/002.jpg</url>
+   <caption></caption>
+</image>
+<image>
+   <url>images/003.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/004.jpg</url>
+    <caption></caption>
+</image>
+<image>
+   <url>images/006.jpg</url>
+   <caption></caption>
+</image>
+<image>
+   <url>images/007.jpg</url>
+   <caption></caption>
+</image>
+<image>
+   <url>images/008.jpg</url>
+    <caption></caption>
+</image>
+<image>
+   <url>images/018.jpg</url>
+   <caption></caption>
+</image>
+<image>
+   <url>images/019.jpg</url>
+   <caption></caption>
+</image>
+<image>
+   <url>images/023.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/024.jpg</url>
+    <caption></caption>
+</image>
+<image>
+   <url>images/026.jpg</url>
+   <caption></caption>
+</image>
+<image>
+   <url>images/027.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/028.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/029.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/030.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/031.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/032.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/033.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/037.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/039.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/041.jpg</url>
+   <caption></caption>  
+</image>
+<image>
+   <url>images/044.jpg</url>
+   <caption></caption>  
+</image>
+</gallery>
