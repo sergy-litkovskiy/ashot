@@ -39,9 +39,9 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
 //$db['default']['username'] = "ashotadmin";
-$db['default']['username'] = "root";
-$db['default']['password'] = "clio2004";
-$db['default']['database'] = "ashot";
+$db['default']['username'] = "";
+$db['default']['password'] = "";
+$db['default']['database'] = "";
 $db['default']['dbdriver'] = "mysql";
 //$db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = FALSE;
